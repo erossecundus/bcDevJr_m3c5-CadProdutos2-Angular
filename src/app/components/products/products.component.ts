@@ -17,6 +17,8 @@ export class ProductsComponent {
   product: Product = {} as Product;
   products: Product[] = [];
 
+  showForm : boolean = false;
+
   constructor(private categoryService: CategoryService,
     private productService: ProductService) { }
 
@@ -38,12 +40,19 @@ export class ProductsComponent {
   }
 
 
-  saveProduct() {
-    this.productService.save(this.product).subscribe({
-      next: data => {
-        this.products.push(data);
-        this.product = {} as Product;
-      }
-    });
+  saveProduct(save: boolean) {
+    if(save) {
+      this.productService.save(this.product).subscribe({
+        next: data => {
+          this.products.push(data);
+        }
+      });
+    }
+    this.product = {} as Product;
+    this.showForm = false;
+  }
+
+  create() {
+    this.showForm = true;
   }
 }

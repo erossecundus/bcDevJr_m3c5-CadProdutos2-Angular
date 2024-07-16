@@ -31,7 +31,6 @@
           <div class="col-sm-4">
             <select class="form-select" aria-label="Selecione uma categoria" id="selectCategory" name="category"
               [(ngModel)]="product.category" required>
-              <option value="" selected>Escolha:</option>
               <option *ngFor="let categ of categories" [ngValue]="categ">
                 {{categ.name}}
               </option>
@@ -60,7 +59,8 @@
         </div>
         <div class="row mb-3 mt-3">
           <div class="col-sm-4">
-            <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="formProduct.invalid">Cadastrar</button>
+            <button type="submit" class="btn btn-primary me-1" (click)="save()" [disabled]="formProduct.invalid">Cadastrar</button>
+            <button type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
           </div>
         </div>
 
