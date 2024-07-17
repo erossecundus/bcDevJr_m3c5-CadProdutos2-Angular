@@ -18,6 +18,10 @@ export class ProductComponent {
 
   @Output()
   saveEmitter = new EventEmitter();
+  
+  constructor() {}
+
+  ngOnInit() : void {}
 
   save() {
     this.saveEmitter.emit(true);
@@ -27,8 +31,7 @@ export class ProductComponent {
     this.saveEmitter.emit();
   }
 
-  constructor() {}
-
-  ngOnInit() : void {}
-
+  selectedCategory(cat1: Category, cat2: Category) {
+    return cat1 && cat2 ? cat1.id === cat2.id : false;
+  }
 }
